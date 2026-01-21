@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day 1 JavaScript Practice</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      background: white;
+      padding: 20px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .result {
+      margin-top: 15px;
+      background: #eee;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Day 1 JavaScript Website</h2>
+
+  <!-- Square, Cube, Factorial -->
+  <h3>Number Operations</h3>
+  <input type="number" id="num" placeholder="Enter a number">
+  <button onclick="calculate()">Calculate</button>
+  <div class="result" id="numResult"></div>
+
+  <hr>
+
+  <!-- Grade Calculator -->
+  <h3>Grade Calculator</h3>
+  <input type="number" id="marks" placeholder="Enter marks">
+  <button onclick="calculateGrade()">Check Grade</button>
+  <div class="result" id="gradeResult"></div>
+
+  <hr>
+
+  <!-- Simple Calculator -->
+  <h3>Simple Calculator</h3>
+  <input type="number" id="n1" placeholder="First number">
+  <input type="number" id="n2" placeholder="Second number">
+
+  <select id="operator">
+    <option value="+">Addition (+)</option>
+    <option value="-">Subtraction (-)</option>
+    <option value="*">Multiplication (*)</option>
+    <option value="/">Division (/)</option>
+  </select>
+
+  <button onclick="calculator()">Calculate</button>
+  <div class="result" id="calcResult"></div>
+</div>
+
+<script>
+  function calculate() {
+    let n = Number(document.getElementById("num").value);
+    let square = n * n;
+    let cube = n * n * n;
+
+    let fact = 1;
+    for (let i = 1; i <= n; i++) {
+      fact *= i;
+    }
+
+    document.getElementById("numResult").innerHTML =
+      `Square: ${square}<br>Cube: ${cube}<br>Factorial: ${fact}`;
+  }
+
+  function calculateGrade() {
+    let marks = Number(document.getElementById("marks").value);
+    let grade;
+
+    if (marks >= 90) grade = "A";
+    else if (marks >= 75) grade = "B";
+    else if (marks >= 50) grade = "C";
+    else grade = "Fail";
+
+    document.getElementById("gradeResult").innerText =
+      `Grade: ${grade}`;
+  }
+
+  function calculator() {
+    let a = Number(document.getElementById("n1").value);
+    let b = Number(document.getElementById("n2").value);
+    let op = document.getElementById("operator").value;
+    let res;
+
+    switch (op) {
+      case "+": res = a + b; break;
+      case "-": res = a - b; break;
+      case "*": res = a * b; break;
+      case "/": res = a / b; break;
+    }
+
+    document.getElementById("calcResult").innerText =
+      `Result: ${res}`;
+  }
+</script>
+
+</body>
+</html>
